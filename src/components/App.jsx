@@ -52,18 +52,20 @@ const App = () => {
         />
       </Section>
 
-      <Section title="Statistics">
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={countTotalFeedback()}
-          positivePercentage={countPositiveFeedbackPercentage()}
-        />
-        <button className={styles.resetButton} onClick={handleResetFeedback}>
-          Reset Statistics
-        </button>
-      </Section>
+      {countTotalFeedback() > 0 && (
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={countTotalFeedback()}
+            positivePercentage={countPositiveFeedbackPercentage()}
+          />
+          <button className={styles.resetButton} onClick={handleResetFeedback}>
+            Reset Statistics
+          </button>
+        </Section>
+      )}
     </div>
   );
 };
